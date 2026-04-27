@@ -6,7 +6,7 @@ export function parseAcpCommand(value: unknown): AcpCommand {
   if (!result.success) {
     throw new Error(`Invalid ACP command: ${result.error.message}`);
   }
-  return result.data as AcpCommand;
+  return result.data;
 }
 
 export function parseAcpEvent(value: unknown): AcpEvent {
@@ -14,5 +14,5 @@ export function parseAcpEvent(value: unknown): AcpEvent {
   if (!result.success) {
     throw new Error(`Invalid ACP event: ${result.error.message}`);
   }
-  return result.data as AcpEvent;
+  return result.data;
 }
