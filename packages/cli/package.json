@@ -7,6 +7,12 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build": "tsup src/main.ts src/index.ts --format esm --dts",
     "typecheck": "tsc --noEmit"
