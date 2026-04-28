@@ -16,7 +16,7 @@
 - Claude Agent SDK 不直接支持 ACP 客户端协议层，需要在 SDK 外自研协议适配层。
 - SDK 可提供 Runtime 积木: `query()`、streaming messages、sessions/resume、permissions/hooks、tools、MCP、subagents、skills、slash commands、plugins。
 - Managed Agents 的 `agents / sessions / events / tool_confirmation` 模型适合作为 ACP 事件与会话设计参考。
-- 长期可以抽象 `AgentBackend`，MVP 实现 `ClaudeAgentSdkBackend`，后续增加 `ManagedAgentsBackend`。
+- 长期可以抽象 `AgentBackend`，MVP 由 `@almond/core` 装配默认 Claude Agent SDK backend，后续增加 `ManagedAgentsBackend`。
 
 ## Phase 1: ACP + Runtime MVP
 
@@ -28,8 +28,8 @@
 |------|------|
 | ACP schema | command/event/session/approval 类型定义 |
 | Runtime core | run 管理、session 管理、事件转换 |
-| ClaudeAgentSdkBackend | 封装 Claude Agent SDK `query()` |
-| CLI adapter | 支持 one-shot prompt 和 `--stdio` 原始 ACP 模式；审批响应在后续任务补齐 |
+| `@almond/core` | 封装默认 Claude Agent SDK backend 与核心装配 |
+| CLI adapter | 支持交互终端、one-shot prompt 和 `--stdio` 原始 ACP 模式；审批响应在后续任务补齐 |
 | 基础测试 | schema 校验、事件转换、CLI golden path |
 
 **验收标准**

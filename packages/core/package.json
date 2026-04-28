@@ -1,5 +1,5 @@
 {
-  "name": "@almond/backend-claude-agent-sdk",
+  "name": "@almond/core",
   "version": "0.0.0",
   "type": "module",
   "main": "dist/index.js",

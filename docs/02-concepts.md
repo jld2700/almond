@@ -62,7 +62,7 @@ ACP Event Stream
                         │
 ┌───────────────────────▼─────────────────────────────┐
 │                  Agent Runtime Layer                 │
-│  ClaudeAgentSdkBackend / Permission / Session Store  │
+│        @almond/core / Permission / Session Store      │
 └───────────────────────┬─────────────────────────────┘
                         │
 ┌───────────────────────▼─────────────────────────────┐
@@ -172,7 +172,7 @@ Claude Agent SDK
 **定义**: ACP Runtime 与具体 Agent 执行后端之间的接口。
 
 **关系**:
-- MVP 实现 `ClaudeAgentSdkBackend`。
+- MVP 由 `@almond/core` 装配默认 Claude Agent SDK backend。
 - 后续可增加 `ManagedAgentsBackend`。
 
 **约束（Invariants）**:

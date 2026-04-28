@@ -2,21 +2,27 @@
 
 ## Quick Start
 
-目标形态如下。代码示例是协议层预期用法，不代表当前已实现。
+启动交互终端：
 
-```ts
-import { createRuntime } from "@almond/runtime";
+```bash
+almond
+```
 
-const runtime = createRuntime({ backend: "claude-agent-sdk" });
+进入后输入任务，使用 `/exit` 或 `/quit` 退出：
 
-for await (const event of runtime.startRun({
-  type: "run.start",
-  runId: crypto.randomUUID(),
-  prompt: "Summarize this project",
-  allowedTools: ["Read", "Glob", "Grep"],
-})) {
-  if (event.type === "message.delta") process.stdout.write(event.content);
-}
+```text
+Almond interactive mode
+Type /exit or /quit to quit.
+
+almond> Summarize this project
+...
+almond> /exit
+```
+
+执行一次性任务：
+
+```bash
+almond "Summarize this project"
 ```
 
 ## Raw ACP stdio mode
@@ -88,7 +94,7 @@ CLI Adapter
 ACP Runtime
     │ startRun(command)
     ▼
-ClaudeAgentSdkBackend
+@almond/core
     │ query(prompt, options)
     ▼
 Claude Agent SDK
