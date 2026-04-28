@@ -64,4 +64,39 @@ describe("stdio server", () => {
     ]);
     expect(lines[0].error.message).toContain("Invalid ACP command");
   });
+
+  it("returns run.failed with unknown runId for malformed JSON", async () => {
+    const input = Readable.from(['{"type":"run.start","runId":"run_bad"\n']);
+    const output = new MemoryWritable();
+    const runtime = createAgentRuntime({ backend: new MockAgentBackend() });
+
+    await runStdioServer({ input, output, runtime });
+
+    const lines = output.chunks.join("").trim().split("\n").map((line) => JSON.parse(line));
+    expect(lines).toEqual([
+      {
+        type: "run.failed",
+        runId: "unknown",
+        error: expect.objectContaining({ code: "INVALID_COMMAND" }),
+      },
+    ]);
+  });
+
+  it("returns run.failed with unknown runId for invalid commands with empty runId", async () => {
+    const input = Readable.from(['{"type":"run.start","runId":"","prompt":"hello"}\n']);
+    const output = new MemoryWritable();
+    const runtime = createAgentRuntime({ backend: new MockAgentBackend() });
+
+    await runStdioServer({ input, output, runtime });
+
+    const lines = output.chunks.join("").trim().split("\n").map((line) => JSON.parse(line));
+    expect(lines).toEqual([
+      {
+        type: "run.failed",
+        runId: "unknown",
+        error: expect.objectContaining({ code: "INVALID_COMMAND" }),
+      },
+    ]);
+    expect(lines[0].error.message).toContain("Invalid ACP command");
+  });
 });
