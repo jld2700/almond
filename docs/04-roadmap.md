@@ -29,7 +29,7 @@
 | ACP schema | command/event/session/approval 类型定义 |
 | Runtime core | run 管理、session 管理、事件转换 |
 | ClaudeAgentSdkBackend | 封装 Claude Agent SDK `query()` |
-| CLI adapter | 支持 prompt 输入、流式输出、审批响应、取消 |
+| CLI adapter | 支持 one-shot prompt 和 `--stdio` 原始 ACP 模式；审批响应在后续任务补齐 |
 | 基础测试 | schema 校验、事件转换、CLI golden path |
 
 **验收标准**
@@ -39,7 +39,7 @@
 - [ ] CLI 能收到 `message.delta` 流式输出。
 - [ ] Runtime 能把工具调用转成 `tool.requested/tool.completed`。
 - [ ] 敏感工具调用能触发 `approval.requested`。
-- [ ] 用户 allow/deny 后 Runtime 能继续或拒绝执行。
+- [ ] Runtime 能发出 `approval.requested`；CLI 交互式 allow/deny 在 Phase 1.1 补齐。
 - [ ] 能拿到并保存 session id。
 - [ ] 能通过 `session.resume` 恢复上下文。
 

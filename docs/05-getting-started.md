@@ -19,6 +19,20 @@ for await (const event of runtime.startRun({
 }
 ```
 
+## Raw ACP stdio mode
+
+```bash
+printf '%s\n' '{"type":"run.start","runId":"run_1","prompt":"hello"}' | almond --stdio
+```
+
+Expected output is NDJSON events:
+
+```json
+{"type":"session.started","runId":"run_1","sessionId":"..."}
+{"type":"message.delta","runId":"run_1","role":"assistant","content":"..."}
+{"type":"run.completed","runId":"run_1","sessionId":"...","result":"..."}
+```
+
 ---
 
 ## 端到端演示: CLI 发起 Agent Run
