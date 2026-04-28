@@ -11,7 +11,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build -w @almond/acp && npm run build -w @almond/runtime && npm run build -w @almond/stdio && npm run build -w @almond/core && npm run build -w @almond/cli",
+    "build": "npm run build -w @almond/acp && npm run build -w @almond/core && npm run build -w @almond/stdio && npm run build -w @almond/cli",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "npm run typecheck --workspaces --if-present",

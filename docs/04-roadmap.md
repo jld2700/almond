@@ -16,7 +16,7 @@
 - Claude Agent SDK 不直接支持 ACP 客户端协议层，需要在 SDK 外自研协议适配层。
 - SDK 可提供 Runtime 积木: `query()`、streaming messages、sessions/resume、permissions/hooks、tools、MCP、subagents、skills、slash commands、plugins。
 - Managed Agents 的 `agents / sessions / events / tool_confirmation` 模型适合作为 ACP 事件与会话设计参考。
-- 长期可以抽象 `AgentBackend`，MVP 由 `@almond/core` 装配默认 Claude Agent SDK backend，后续增加 `ManagedAgentsBackend`。
+- `@almond/core` 作为核心运行时，内聚 command router、backend interface、默认 Claude Agent SDK backend 和 mock backend。
 
 ## Phase 1: ACP + Runtime MVP
 
@@ -27,8 +27,7 @@
 | 组件 | 描述 |
 |------|------|
 | ACP schema | command/event/session/approval 类型定义 |
-| Runtime core | run 管理、session 管理、事件转换 |
-| `@almond/core` | 封装默认 Claude Agent SDK backend 与核心装配 |
+| `@almond/core` | Core runtime：run 管理、session 管理、事件转换、backend interface、默认 Claude Agent SDK backend、mock backend |
 | CLI adapter | 支持交互终端、one-shot prompt 和 `--stdio` 原始 ACP 模式；审批响应在后续任务补齐 |
 | 基础测试 | schema 校验、事件转换、CLI golden path |
 
@@ -80,8 +79,8 @@
 | MCP config | 接入 MCP servers 配置 |
 | Skills support | 支持 Claude Code skills 或项目 skills |
 | Slash commands | 支持常用命令入口 |
-| ManagedAgentsBackend Spike | 验证 Managed Agents 作为第二 backend 的可行性 |
-| Backend comparison report | 对比自研 Runtime 与 Managed Agents |
+| Managed Agents Spike | 验证 Managed Agents 的能力边界与可借鉴设计 |
+| Backend comparison report | 对比本地 `@almond/core` Runtime 与 Managed Agents |
 
 **验收标准**
 

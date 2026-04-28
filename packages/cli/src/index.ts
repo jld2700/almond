@@ -2,9 +2,8 @@ import { randomUUID } from "node:crypto";
 import { createInterface } from "node:readline";
 import type { Readable, Writable } from "node:stream";
 import type { AcpEvent } from "@almond/acp";
-import { ClaudeAgentSdkBackend } from "@almond/core";
-import { createAgentRuntime, MockAgentBackend } from "@almond/runtime";
-import type { AgentRuntime } from "@almond/runtime";
+import { ClaudeAgentSdkBackend, createAgentRuntime, MockAgentBackend } from "@almond/core";
+import type { AgentRuntime } from "@almond/core";
 import { runStdioServer } from "@almond/stdio";
 
 export interface RunCliOptions {

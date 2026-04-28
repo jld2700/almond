@@ -5,10 +5,10 @@
 | 模块 | 职责 | 依赖 |
 |------|------|------|
 | `@almond/acp` | ACP 类型、schema、协议常量 | 无 |
-| `@almond/runtime` | Run/session 管理，backend 抽象 | `@almond/acp` |
-| `@almond/core` | Claude Agent SDK backend 实现 | `@almond/runtime`, Claude Agent SDK |
-| `@almond/cli` | CLI 客户端适配 | `@almond/acp` |
-| `@almond/server` | 可选 Runtime Server，提供 Web/VSCode 连接 | `@almond/runtime` |
+| `@almond/core` | Run/session 管理、backend 抽象、默认 Claude Agent SDK backend、mock backend | `@almond/acp`, Claude Agent SDK |
+| `@almond/stdio` | ACP over stdio using NDJSON 传输 | `@almond/acp`, `@almond/core` |
+| `@almond/cli` | CLI 客户端适配 | `@almond/acp`, `@almond/core`, `@almond/stdio` |
+| `@almond/server` | 可选 Runtime Server，提供 Web/VSCode 连接 | `@almond/core` |
 
 ---
 

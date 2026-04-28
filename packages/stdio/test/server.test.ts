@@ -1,6 +1,6 @@
 import { Readable, Writable } from "node:stream";
 import { describe, expect, it } from "vitest";
-import { MockAgentBackend, createAgentRuntime } from "@almond/runtime";
+import { MockAgentBackend, createAgentRuntime } from "@almond/core";
 import { runStdioServer } from "../src/index.js";
 
 class MemoryWritable extends Writable {

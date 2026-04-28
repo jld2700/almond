@@ -19,9 +19,8 @@
   },
   "dependencies": {
     "@almond/acp": "0.0.0",
-    "@almond/runtime": "0.0.0",
-    "@almond/stdio": "0.0.0",
-    "@almond/core": "0.0.0"
+    "@almond/core": "0.0.0",
+    "@almond/stdio": "0.0.0"
   },
   "devDependencies": {
     "typescript": "^5.4.5"

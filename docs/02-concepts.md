@@ -172,8 +172,8 @@ Claude Agent SDK
 **定义**: ACP Runtime 与具体 Agent 执行后端之间的接口。
 
 **关系**:
-- MVP 由 `@almond/core` 装配默认 Claude Agent SDK backend。
-- 后续可增加 `ManagedAgentsBackend`。
+- MVP 由 `@almond/core` 直接提供核心运行时与默认 Claude Agent SDK backend。
+- Agent 核心能力保持在 `@almond/core` 内聚，避免过早拆分可替换 backend。
 
 **约束（Invariants）**:
 - 客户端不感知具体 backend。

@@ -5,7 +5,7 @@ import type {
   RunStartCommand,
   SessionResumeCommand,
 } from "@almond/acp";
-import type { AgentBackend } from "@almond/runtime";
+import type { AgentBackend } from "./backend.js";
 import { query as defaultQuery } from "@anthropic-ai/claude-agent-sdk";
 
 type QueryInput = {

@@ -1,7 +1,7 @@
 import { createInterface } from "node:readline";
 import type { Readable, Writable } from "node:stream";
 import { parseAcpCommand } from "@almond/acp";
-import type { AgentRuntime } from "@almond/runtime";
+import type { AgentRuntime } from "@almond/core";
 import { writeNdjson } from "./ndjson.js";
 
 export interface StdioServerOptions {
