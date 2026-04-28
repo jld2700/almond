@@ -31,6 +31,6 @@ describe("CLI", () => {
 
     expect(code).toBe(2);
     expect(stdout.chunks.join("")).toBe("");
-    expect(stderr.chunks.join("")).toBe("Usage: almond <prompt>\n");
+    expect(stderr.chunks.join("")).toBe("Usage: almond <prompt>\nUsage: almond --stdio\n");
   });
 });
